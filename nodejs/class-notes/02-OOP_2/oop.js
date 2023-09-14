@@ -114,7 +114,7 @@ const fordCliamate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1967, 'SUV
 // const fordCliamate = new Accessory('Bosh Climate', ...Object.values(ford)) //? Sıralama Önemli.
 console.log (fordCliamate)
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //? Polymorphism: Miras aldığımız sınıfın özellik/methodlarını yeniden yazabilme.
 //? Override: Üst metodla aynı isim ve yapıda yeni bir metod yazma. (ezme / iptal etme / önceliğini alma)
 //? Overload: Üst metodla aynı isimde ama farklı yapıda (parametre adet/tip) yeni method oluşturma. (aynı anda ikiside aktif) (JS desteklemez)
@@ -168,4 +168,51 @@ const ford = new Car("Ford", "Mustang", 1967, "SUV");
 console.log(ford);
 console.log(ford.getDetails());
 
+
 /* ------------------------------------------------------- */
+class Vehicle {
+  vehicleIsActive = false; //? Public
+  _protectedProp = true; //? Protected property
+  #privateProp = true; //? Private Property
+
+  constructor(vehicleType) {
+    this.vehicleType = vehicleType;
+  }
+}
+
+// Override yapma lütfen:
+    _protectedMethod() {
+        console.log('Vehicle.protectedMethod()')
+        return true
+    }
+
+    #privateMethod() {
+        console.log('Vehicle.privateMethod()')
+        return true
+    }
+
+    getDetails() {
+        console.log('Vehicle.getDetails()')
+        this.#privateMethod()
+        return this.vehicleType + ' is ' + this.privateProp
+        return this.vehicleType + ' is ' + this.#privateProp // Undefined.
+    }
+
+class Car extends Vehicle {
+  isRunning = false;
+
+  constructor(brand, model, year, vehicleType = "Car") {
+    //? super() parametresi en tepede olmalı (Önce parent constructor çalıştırılmalı)
+    super(vehicleType); // run constructor of ParentClass
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+  }
+
+  runEngine() {
+    this.isRunning = true;
+    console.log("Motor Çalıştı");
+    return this.isRunning;
+  }
+}
+
