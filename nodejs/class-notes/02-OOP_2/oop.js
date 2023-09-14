@@ -1,189 +1,118 @@
 "use strict";
 
 /* -------------------------------------------------------
-    OBJECTS
-------------------------------------------------------- */
+    OOP & CLASSES
+------------------------------------------------------- *
+//? OOP: Object Oriented Programming
+//? DRY: Don't Repeat Yourself
+//? BLUEPRINT: Taslak (Mimarların kullandığı mavi şablon kağıdı)
+//? CLASS: Obje türetmek için kullanılacak şablon.
 
-// const exampleObject = {
+// Class Declaration:
+// class PascalNamedClassName { ... }
 
-//     propertyName: 'value', // field, attribute
-//     methodName: function () {
-//         return 'This is Method'
-//     }
-// }
+// Class Expression:
+const PascalNamedClassName = class {
 
-// console.log( exampleObject.propertyName )
-// console.log( exampleObject.methodName() )
+    undefinedProperty // Onle definition ('undefined')
+    extraField = 'field-value'
 
-/* ------------------------------------------------------- *
+    //? "new Class" ile obje oluştururken veri göndermek için "constructor" methodu kullanılır.
+    constructor (parameter1, parameter2 = 'default-value') {
+        this.parameter1 = parameter1
+        this.parameter2 = parameter2
+    }
 
-const Car = {
+    methodName1() {
+        return this
+    }
 
-    brand: 'Ford',
-    model: 'Mustang',
-    year: 1967,
-    isAutoGear: true,
-    colors: ['white', 'red'],
-    details: {
-        color1: 'red',
-        color2: 'white',
-        engineSize: 4900
-    },
-    startEngine: function () {
-        return 'Motor çalıştı'
+    methodName2() {
+        return this.extraField
     }
 }
 
-// console.log( Car.brand )
-// console.log( Car.colors )
-// console.log( Car.colors[0] )
-// console.log( Car.details )
-// console.log( Car.details.engineSize )
-// console.log( Car.startEngine() )
-
-console.log( Car['brand'] )
-console.log( Car.details['engineSize'] )
-console.log( Car['details']['engineSize'] )
-console.log( Car['startEngine']() )
+//? INSTANCE: Bir classtan türetilen objedir.
+const instance = new PascalNamedClassName('parameter-1-value', 'parameter-2-value')
+console.log( instance )
+console.log( instance.methodName2() )
+instance.extraField = 'new-value'
+console.log( instance.extraField )
 
 /* ------------------------------------------------------- *
-//? "THIS" KEYWORD
 
-const Car = {
+class Car {
 
-    brand: 'Ford',
-    model: 'Mustang',
-    year: 1967,
-    isAutoGear: true,
-    colors: ['white', 'red'],
-    details: {
-        color1: 'red',
-        color2: 'white',
-        engineSize: 4900
-    },
-    startEngine: function () {
-        return 'Motor çalıştı'
-    },
-    getDetails: function () {
+    isRunning = false
 
-        // return this
-        // return this.brand + ' ' + this.model + ' ' + this.year
-        return this.startEngine()
+    constructor(brand, model, year) {
+        this.brand = brand
+        this.model = model
+        this.year = year
+    }
 
-    },
-    arrowFunc: () => {
-    //? Arrow functions is globalScope. (Not working this keyword in here)
-        // return this
-        return this.brand
+    runEngine() {
+        this.isRunning = true
+        console.log('Motor Çalıştı')
+        return this.isRunning
     }
 }
 
-// console.log( Car.getDetails() )
-console.log( Car.arrowFunc() )
+const ford = new Car('Ford', 'Mustang', 1967)
+console.log ( ford )
+console.log ( ford.isRunning ) //> false
+ford.runEngine() //> Motor Çalıştı
+console.log ( ford.isRunning ) //> true
+
+// const mercedes  = new Car('Mercedes', 'CLK200', 2000)
+// console.log ( mercedes )
 
 /* ------------------------------------------------------- *
-//? ARRAY DESTRUCTURING
+//? INHERITANCE: MirasAlma. Başka bir Class'ın tüm özelliklerini devralma (parent-child ilişkisi kurma)
+//? THIS: Child Class - SUPER: Parent Class
 
-const testArray = [ 'value0', 'value1', 'value2', 'value3' ]
+class Vehicle {
 
-// const var0 = testArray[0]
-// const var1 = testArray[1]
+    vehicleIsActive = false
 
-//? Sıralama Önemli!
-// const [ firstItem, secondItem ] = testArray
-// console.log(firstItem, secondItem)
-
-//? RestOperator (Toplayıcı) (En sonda olmak zorunda):
-// let [ first, second, third, ...others ] = testArray
-// console.log(first, second, others)
-
-//? SpreadOperator (Dağıtıcı):
-const newArr = [ ...testArray, 'new-value', 'new-value2' ]
-console.log( newArr )
-
-/* ------------------------------------------------------- *
-//? OBJECT DESTRUCTURING
-
-const Car = {
-
-    brand: 'Ford',
-    model: 'Mustang',
-    year: 1967,
-    isAutoGear: true,
-    colors: ['white', 'red'],
-    details: {
-        color1: 'red',
-        color2: 'white',
-        engineSize: 4900
-    },
-    startEngine: function () {
-        return 'Motor çalıştı'
+    constructor(vehicleType) {
+        this.vehicleType = vehicleType
     }
 }
 
-// Rest:
-// const { year, model, brand, ...otherItems } = Car
-// console.log( year, model, brand )
-// console.log( otherItems )
+class Car extends Vehicle {
 
-const { year: modelYear, model: newName, brand } = Car
-console.log( modelYear, newName, brand )
-console.log ( Car ) // Orjinal değişmiyor.
+    isRunning = false
 
-// Spread:
-const newObj = {
-    ...Car.colors,
-    newKey: 'new-value'
+    constructor(brand, model, year, vehicleType = 'Car') {
+        //? super() parametresi en tepede olmalı (Önce parent constructor çalıştırılmalı)
+        super(vehicleType) // run constructor of ParentClass
+        this.brand = brand
+        this.model = model
+        this.year = year
+    }
+
+    runEngine() {
+        this.isRunning = true
+        console.log('Motor Çalıştı')
+        return this.isRunning
+    }
 }
-console.log(newObj)
 
-// Object to JSON:
-const json = JSON.stringify(Car)
-console.log ( typeof json, json )
+const ford = new Car('Ford', 'Mustang', 1967, 'SUV')
+console.log( ford )
 
-// JSON to Object:
-const newObj2 = JSON.parse( json )
-console.log(typeof newObj2, newObj2)
+class Accessory extends Car {
 
-// Object to Array:
-// const arr = [ ...Car ]
-const arr = Object.entries(Car)
-console.log( arr )
-const arr2 = Object.values(Car)
-console.log(arr2)
-const arr3 = Object.keys(Car)
-console.log(arr3)
+    constructor(accessoryName, brand, model, year, vehicleType = 'Car') {
+        super(brand, model, year, vehicleType)
+        this.accessoryName = accessoryName
+    }
+}
 
-/* -------------------------------------------------------
-    Object Constructor
-------------------------------------------------------- */
-
-const PascalCaseNamed = function () {
-  this.property = "value";
-};
+// const fordCliamate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1967, 'SUV')
+const fordCliamate = new Accessory('Bosh Climate', ...Object.values(ford))
+console.log (fordCliamate)
 
 /* ------------------------------------------------------- */
-//? "NEW" KEYWORD
-
-const CarConstructor = function (brand, model, year = 2011) {
-  this.brand = brand;
-  this.model = model;
-  this.year = year;
-  this.isRunning = false;
-  this.startEngine = function () {
-    this.isRunning = true;
-    return "Motor çalıştı";
-  };
-};
-
-const newCar = new CarConstructor("Ford", "Mustang", 1967);
-console.log(newCar);
-
-const newCar2 = new CarConstructor("Toyota", "Corolla");
-console.log(newCar2);
-
-console.log(newCar2.isRunning);
-console.log(newCar2.startEngine());
-console.log(newCar2.isRunning);
-
 /* ------------------------------------------------------- */
