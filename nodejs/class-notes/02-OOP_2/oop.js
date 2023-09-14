@@ -110,9 +110,62 @@ class Accessory extends Car {
     }
 }
 
-// const fordCliamate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1967, 'SUV')
-const fordCliamate = new Accessory('Bosh Climate', ...Object.values(ford))
+const fordCliamate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1967, 'SUV')
+// const fordCliamate = new Accessory('Bosh Climate', ...Object.values(ford)) //? Sıralama Önemli.
 console.log (fordCliamate)
 
 /* ------------------------------------------------------- */
+//? Polymorphism: Miras aldığımız sınıfın özellik/methodlarını yeniden yazabilme.
+//? Override: Üst metodla aynı isim ve yapıda yeni bir metod yazma. (ezme / iptal etme / önceliğini alma)
+//? Overload: Üst metodla aynı isimde ama farklı yapıda (parametre adet/tip) yeni method oluşturma. (aynı anda ikiside aktif) (JS desteklemez)
+
+class Vehicle {
+  vehicleIsActive = false;
+
+  constructor(vehicleType) {
+    this.vehicleType = vehicleType;
+  }
+
+  getDetails() {
+    console.log("Vehicle getDetails çalıştı");
+    return this.vehicleType;
+  }
+}
+
+class Car extends Vehicle {
+  isRunning = false;
+
+  constructor(brand, model, year, vehicleType = "Car") {
+    //? super() parametresi en tepede olmalı (Önce parent constructor çalıştırılmalı)
+    super(vehicleType); // run constructor of ParentClass
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+  }
+
+  runEngine() {
+    this.isRunning = true;
+    console.log("Motor Çalıştı");
+    return this.isRunning;
+  }
+
+  //? Override: Üstteki method ile aynı isimde. Artık bu geçerli.
+  getDetails() {
+    console.log("Car getDetails çalıştı");
+    // return this
+    return {
+      brand: this.brand,
+      model: this.model,
+      year: this.year,
+      vehicleType: super.getDetails(), // Parent class metodları super ile çalıştırabilir.
+      // vehicleIsActive: super.vehicleIsActive // super constructor bu veriyi this'e aktardı.
+      vehicleIsActive: this.vehicleIsActive, // super constructor bu veriyi this'e aktardı.
+    };
+  }
+}
+
+const ford = new Car("Ford", "Mustang", 1967, "SUV");
+console.log(ford);
+console.log(ford.getDetails());
+
 /* ------------------------------------------------------- */
