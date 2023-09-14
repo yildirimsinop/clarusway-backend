@@ -1,68 +1,189 @@
 "use strict";
 
-/*-----------------------------------------------------------------------------
+/* -------------------------------------------------------
+    OBJECTS
+------------------------------------------------------- */
 
-OOP & classes
--------------------------------------------------------------------------------
-//? OOP: Object Oriented Programming
-//? DRY: Don't Repeat Yourself
-//? BLUEPRINT: Taslak (Mimarların kullandığı mavi şablon kağıdı)
-//? CLASS: Obje türetmek için kullanılacak şablon.
+// const exampleObject = {
 
-// Class Declaration:
-
-// class PascalNamedClassName {
-
+//     propertyName: 'value', // field, attribute
+//     methodName: function () {
+//         return 'This is Method'
+//     }
 // }
 
-const PascalNamedClassName = class {
-  undefinedProperty; //? Onle definition ("undefined")
-  extraField = "field-value";
+// console.log( exampleObject.propertyName )
+// console.log( exampleObject.methodName() )
 
-  methodName1() {
-    return this;
-  }
-  methodName2() {
-    return this.extraField;
-  }
-};
+/* ------------------------------------------------------- *
 
-//? "new Class" ile obje olustururken veri gondermek icin "constructor" methodu kullanilir.
+const Car = {
 
-constructor (parameter1, parameter2) {
-    this.parameter1 = parameter1
-    this.parameter2 = parameter2
+    brand: 'Ford',
+    model: 'Mustang',
+    year: 1967,
+    isAutoGear: true,
+    colors: ['white', 'red'],
+    details: {
+        color1: 'red',
+        color2: 'white',
+        engineSize: 4900
+    },
+    startEngine: function () {
+        return 'Motor çalıştı'
+    }
 }
 
-//? INSTANCE: Bir classtan turetilen objedir.
+// console.log( Car.brand )
+// console.log( Car.colors )
+// console.log( Car.colors[0] )
+// console.log( Car.details )
+// console.log( Car.details.engineSize )
+// console.log( Car.startEngine() )
 
-const instance = new PascalNamedClassName("parameter-1-value", "parameter-2-value");
-console.log(instance);
-console.log(instance.methodName2);
--------------------------------------------------------------------------------*/
+console.log( Car['brand'] )
+console.log( Car.details['engineSize'] )
+console.log( Car['details']['engineSize'] )
+console.log( Car['startEngine']() )
 
-// class Car {
-//   isRunning = false;
-//   constructor(brand, model, year) {
-//     this.brand = brand;
-//     this.model = model;
-//     this.year = year;
-//   }
+/* ------------------------------------------------------- *
+//? "THIS" KEYWORD
 
-//   runEngine() {
-//     this.isRunning = true;
-//     console.log("Motor Calisti");
-//     return this.isRunning;
-//   }
-// }
+const Car = {
 
-// const ford = new Car("Ford", "Mustang", 1967);
+    brand: 'Ford',
+    model: 'Mustang',
+    year: 1967,
+    isAutoGear: true,
+    colors: ['white', 'red'],
+    details: {
+        color1: 'red',
+        color2: 'white',
+        engineSize: 4900
+    },
+    startEngine: function () {
+        return 'Motor çalıştı'
+    },
+    getDetails: function () {
 
-// console.log(ford);
-// console.log(ford.isRunning);
-// ford.runEngine();
-// console.log(ford.isRunning);
+        // return this
+        // return this.brand + ' ' + this.model + ' ' + this.year
+        return this.startEngine()
 
-// const mercedes = new Car("Mercedes", "CLK200", 2000);
+    },
+    arrowFunc: () => {
+    //? Arrow functions is globalScope. (Not working this keyword in here)
+        // return this
+        return this.brand
+    }
+}
 
-// console.log(mercedes);
+// console.log( Car.getDetails() )
+console.log( Car.arrowFunc() )
+
+/* ------------------------------------------------------- *
+//? ARRAY DESTRUCTURING
+
+const testArray = [ 'value0', 'value1', 'value2', 'value3' ]
+
+// const var0 = testArray[0]
+// const var1 = testArray[1]
+
+//? Sıralama Önemli!
+// const [ firstItem, secondItem ] = testArray
+// console.log(firstItem, secondItem)
+
+//? RestOperator (Toplayıcı) (En sonda olmak zorunda):
+// let [ first, second, third, ...others ] = testArray
+// console.log(first, second, others)
+
+//? SpreadOperator (Dağıtıcı):
+const newArr = [ ...testArray, 'new-value', 'new-value2' ]
+console.log( newArr )
+
+/* ------------------------------------------------------- *
+//? OBJECT DESTRUCTURING
+
+const Car = {
+
+    brand: 'Ford',
+    model: 'Mustang',
+    year: 1967,
+    isAutoGear: true,
+    colors: ['white', 'red'],
+    details: {
+        color1: 'red',
+        color2: 'white',
+        engineSize: 4900
+    },
+    startEngine: function () {
+        return 'Motor çalıştı'
+    }
+}
+
+// Rest:
+// const { year, model, brand, ...otherItems } = Car
+// console.log( year, model, brand )
+// console.log( otherItems )
+
+const { year: modelYear, model: newName, brand } = Car
+console.log( modelYear, newName, brand )
+console.log ( Car ) // Orjinal değişmiyor.
+
+// Spread:
+const newObj = {
+    ...Car.colors,
+    newKey: 'new-value'
+}
+console.log(newObj)
+
+// Object to JSON:
+const json = JSON.stringify(Car)
+console.log ( typeof json, json )
+
+// JSON to Object:
+const newObj2 = JSON.parse( json )
+console.log(typeof newObj2, newObj2)
+
+// Object to Array:
+// const arr = [ ...Car ]
+const arr = Object.entries(Car)
+console.log( arr )
+const arr2 = Object.values(Car)
+console.log(arr2)
+const arr3 = Object.keys(Car)
+console.log(arr3)
+
+/* -------------------------------------------------------
+    Object Constructor
+------------------------------------------------------- */
+
+const PascalCaseNamed = function () {
+  this.property = "value";
+};
+
+/* ------------------------------------------------------- */
+//? "NEW" KEYWORD
+
+const CarConstructor = function (brand, model, year = 2011) {
+  this.brand = brand;
+  this.model = model;
+  this.year = year;
+  this.isRunning = false;
+  this.startEngine = function () {
+    this.isRunning = true;
+    return "Motor çalıştı";
+  };
+};
+
+const newCar = new CarConstructor("Ford", "Mustang", 1967);
+console.log(newCar);
+
+const newCar2 = new CarConstructor("Toyota", "Corolla");
+console.log(newCar2);
+
+console.log(newCar2.isRunning);
+console.log(newCar2.startEngine());
+console.log(newCar2.isRunning);
+
+/* ------------------------------------------------------- */
