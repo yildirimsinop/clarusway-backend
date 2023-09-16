@@ -1,4 +1,5 @@
 NODEJS
 
-- create index.js
-  npm
+* create index.js
+* create .gitignore (gitignore.io)
+* $ npm init -y
