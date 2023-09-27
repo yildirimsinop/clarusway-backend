@@ -72,7 +72,7 @@ const middleFunction2 = (req, res, next) => {
             req.customData,
             res.customDataWithResponse
         ],
-        message: "Here is func2, first next() runned"
+        message: "Here is func2, next() runned"
     });
 
 }
@@ -118,17 +118,26 @@ const middleFunction1 = (req, res, next) => {
   }
 };
 
-app.use(middleFunction1);
+const middleFunction2 = (req, res, next) => {
+  // next()
 
-app.get("/", (req, res) => {
   res.send({
-    message: "first route",
+    customData: [req.customData, res.customDataWithResponse],
+    message: "Here is func2, next() runned",
   });
-});
+};
 
-app.get("/", (req, res) => {
+// app.use(middleFunction1) // default-url = *
+// app.use('/*', middleFunction1) // default-url = *
+
+// app.use('/path', middleFunction1) // /path == /path/*
+
+// app.use(middleFunction1, middleFunction2)
+app.use([middleFunction1, middleFunction2]);
+
+app.get("/*", (req, res) => {
   res.send({
-    message: "second route",
+    message: "Welcome to Home",
   });
 });
 
