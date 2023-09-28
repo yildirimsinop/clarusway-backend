@@ -11,28 +11,25 @@ const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
 //? "Router" is special app for URL control in ExpressJS.
-// app.get("/", (req, res) => {
-//   res.send({ mesasage: "Home Page" });
-// });
-// app.get("/", (req, res) => {
-//   res.send({ mesasage: "About Page" });
-// });
-// app.get("/", (req, res) => {
-//   res.send({ mesasage: "User Page" });
-// });
 
-const router = express.Router();
+// app.get('/', (req, res) => { res.send({ message: 'Home Page' }) })
+// app.get('/about', (req, res) => { res.send({ message: 'About Page' }) })
+// app.get('/user/:userId', (req, res) => { res.send({ message: 'User Page' }) })
 
-app.get("/", (req, res) => {
-  res.send({ mesasage: "Home Page" });
-});
-app.get("/about", (req, res) => {
-  res.send({ mesasage: "About Page" });
-});
-app.get("/user/userId", (req, res) => {
-  res.send({ mesasage: "User Page" });
-});
+// Send routing to Router:
+// const router = express.Router()
+// router.get('/', (req, res) => { res.send({ message: 'Home Page' }) })
+// router.get('/about', (req, res) => { res.send({ message: 'About Page' }) })
+// router.get('/user/:userId', (req, res) => { res.send({ message: 'User Page' }) })
+// Router to App:
+// app.use(router)
 
-app.use(router);
+// const router = require('./routes/')
+// app.use(router)
+
+// app.use(require('./routes/'))
+
+app.use('/user', require('./routes/user'))
+
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
