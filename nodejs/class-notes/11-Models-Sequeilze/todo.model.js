@@ -48,3 +48,5 @@ sequelize
   .authenticate()
   .then(() => console.log("*DB Connected *"))
   .catch((err) => console.log("* DB Not Connected"));
+
+module.export = Todo;
