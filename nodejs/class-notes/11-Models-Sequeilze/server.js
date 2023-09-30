@@ -46,6 +46,13 @@ const Todo = sequelize.define("todo", {
     // 1: High, 0: Normal, -1: low
     type: DataTypes.TINYINT,
     allowNull: false,
+    defaultValue: 0,
+  },
+
+  isDone: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
   },
 });
 
