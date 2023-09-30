@@ -1,0 +1,13 @@
+{
+  "name": "11-models-sequeilze",
+  "version": "1.0.0",
+  "description": "![](./intro-mvc.png)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
