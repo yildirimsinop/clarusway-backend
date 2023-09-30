@@ -56,7 +56,7 @@ const Todo = sequelize.define("todo", {
   },
 });
 
-sequelize.sync();
+sequelize.sync({ alter: true });
 
 /* ------------------------------------------------------- */
 const errorHandler = (err, req, res, next) => {
