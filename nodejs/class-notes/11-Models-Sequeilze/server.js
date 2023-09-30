@@ -58,6 +58,11 @@ const Todo = sequelize.define("todo", {
 
 sequelize.sync({ alter: true });
 
+sequelize
+  .authenticate()
+  .then(() => console.log("*DB Connected *"))
+  .catch((err) => console.log("* DB Not Connected"));
+
 /* ------------------------------------------------------- */
 const errorHandler = (err, req, res, next) => {
   const errorStatusCode = res.errorStatusCode ?? 500;
