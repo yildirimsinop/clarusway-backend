@@ -20,6 +20,19 @@ app.all("/", (req, res) => {
 //* SEQUELIZE
 
 const { Sequelize, DataTypes } = require("sequelize");
+// const sequelize = new Sequelize("sqlite:./db.sqlite3");
+const sequelize = new Sequelize(
+  "sqlite:" + (process.env.SQLITE || "./db.sqlite3")
+);
+
+const Todo = sequelize.define("todo", {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false, // default: true
+    unique: true,
+    fi,
+  },
+});
 
 /* ------------------------------------------------------- */
 const errorHandler = (err, req, res, next) => {
