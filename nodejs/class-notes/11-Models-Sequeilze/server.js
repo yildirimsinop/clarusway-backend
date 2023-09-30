@@ -30,7 +30,22 @@ const Todo = sequelize.define("todo", {
     type: DataTypes.INTEGER,
     allowNull: false, // default: true
     unique: true,
-    fi,
+    field_name: "custom_column_name",
+    comment: "Description",
+    primaryKey: true,
+    autoIncrement: true,
+  },
+
+  title: {
+    type: DataTypes.STRING(64), // varchar(64)
+    allowNull: false,
+  },
+
+  description: DataTypes.TEXT, //ShortHand Using
+  priority: {
+    // 1: High, 0: Normal, -1: low
+    type: DataTypes.TINYINT,
+    allowNull: false,
   },
 });
 
