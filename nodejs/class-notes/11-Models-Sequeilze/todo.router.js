@@ -20,6 +20,11 @@ router.get('/', async (req, res) => {
 // CREATE:
 router.post('/', async (req, res) => {
 
+    // const data = await Todo.create({
+    //     title: 'Test Title',
+    //     description: 'Test Description',
+    // })
+    // console.log( typeof req.body, req.body )
     const data = await Todo.create(req.body)
     res.send({
         error: false,
