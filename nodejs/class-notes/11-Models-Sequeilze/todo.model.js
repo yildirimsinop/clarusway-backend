@@ -42,7 +42,7 @@ const Todo = sequelize.define('todo', {
     isDone: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: false
+        defaultValue: false,
     },
     
     //? Not need define "createdAt" & "updatedAt" fields.
@@ -54,7 +54,7 @@ const Todo = sequelize.define('todo', {
 //! SYNC MUST RUN ONCE!
 // sequelize.sync() // CREATE TABLE
 // sequelize.sync({ force: true }) // DROP & CREATE
-// sequelize.sync({ alter: true }) // TO BACKUP & DROP & CREATE & FROM BACKUP
+sequelize.sync({ alter: true }) // TO BACKUP & DROP & CREATE & FROM BACKUP
 
 // Connect:
 sequelize.authenticate()
