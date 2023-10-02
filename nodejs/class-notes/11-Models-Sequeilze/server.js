@@ -10,7 +10,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
-//? Accept json data:
+// Accept json data & convert to object:
 app.use(express.json())
 
 // app.all('/', (req, res) => {
@@ -23,6 +23,7 @@ app.use(express.json())
 app.use(require('./todo.router'))
 
 /* ------------------------------------------------------- */
+
 const errorHandler = (err, req, res, next) => {
     const errorStatusCode = res.errorStatusCode ?? 500
     console.log('errorHandler runned.')
