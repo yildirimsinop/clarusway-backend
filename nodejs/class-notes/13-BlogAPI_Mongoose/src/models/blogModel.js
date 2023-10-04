@@ -5,7 +5,7 @@
 
 const mongoose = require('mongoose')
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 
 const nameSchema = new mongoose.Schema({
     
@@ -32,3 +32,18 @@ const nameSchema = new mongoose.Schema({
 })
 
 /* ------------------------------------------------------- */
+
+const blogPost = new mongoose.Schema({
+
+    title: {
+        type: String,
+        trim: true,
+        required: true
+    },
+
+    content: {
+        type: String,
+        trim: true,
+        required: true
+    }
+})
