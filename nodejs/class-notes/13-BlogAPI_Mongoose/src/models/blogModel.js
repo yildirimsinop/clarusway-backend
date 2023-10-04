@@ -33,7 +33,7 @@ const nameSchema = new mongoose.Schema({
 
 /* ------------------------------------------------------- */
 
-const blogPost = new mongoose.Schema({
+const blogPostSchema = new mongoose.Schema({
 
     title: {
         type: String,
@@ -57,3 +57,10 @@ const blogPost = new mongoose.Schema({
     collation: 'blogPosts',
     timestamps: true
 })
+
+const BlogPostModel = mongoose.model('BlogPost', blogPostSchema)
+
+module.exports = {
+    // blogCategory:
+    BlogPost: BlogPostModel
+}
