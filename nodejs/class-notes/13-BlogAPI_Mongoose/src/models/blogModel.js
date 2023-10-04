@@ -45,5 +45,15 @@ const blogPost = new mongoose.Schema({
         type: String,
         trim: true,
         required: true
-    }
+    },
+
+    published: {
+        type: Boolean,
+        default: true
+    },
+    // createdAt
+    // updateAt
+}, {
+    collation: 'blogPosts',
+    timestamps: true
 })
