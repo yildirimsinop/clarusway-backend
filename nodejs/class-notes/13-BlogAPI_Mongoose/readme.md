@@ -25,9 +25,9 @@ https://mongoosejs.com/
         errorHandler.js
         dbConnection.js
         models/
-            blog.js
+            blogModel.js
         controllers/
-            blog.js
+            blogController.js
         routes/
-            blog.js
+            blogRoute.js
 ```
