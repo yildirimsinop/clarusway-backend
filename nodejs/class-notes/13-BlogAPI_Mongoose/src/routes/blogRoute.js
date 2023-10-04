@@ -2,10 +2,10 @@
 /* -------------------------------------------------------
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
-
 const router = require('express').Router()
 
-const { BlogPost} = require('../controllers/blogController')
+// Call Controlers:
+const { BlogPost } = require('../controllers/blogController')
 
 // ------------------------------------------
 // BlogPost
@@ -19,4 +19,4 @@ router.route('/post/:postId')
     .put(BlogPost.update)
     .delete(BlogPost.delete)
 
-    module.exports = router
+module.exports = router

@@ -2,16 +2,20 @@
 /* -------------------------------------------------------
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
+// https://mongoosejs.com/docs/queries.html
 
-require ('express-async-errors')
+// Catch async-errors and send to errorHandler:
+require('express-async-errors')
 
-const { BlogPost} = require('../models/blogModel')
+// Call Models:
+const { BlogPost } = require('../models/blogModel')
 
-
-
+// ------------------------------------------
+// BlogPost
+// ------------------------------------------
 module.exports.BlogPost = {
 
-    list:  async (req, res) => {
+    list: async (req, res) => {
 
         const data = await BlogPost.find()
 
@@ -19,29 +23,34 @@ module.exports.BlogPost = {
             error: false,
             result: data
         })
-
     },
+
     create: async (req, res) => {
+        
+        // const data = await BlogPost.insertOne({
+        //     fieldName: 'value',
+        //     fieldName: 'value',
+        //     fieldName: 'value',
+        // })
+        const data = await BlogPost.insertOne(req.body)
 
-        const data = await BlogPost.create(req.body)
-
-         res.status(201).send({
+        res.status(201).send({
             error: false,
             body: req.body,
-            result: data
+            result: data,
         })
-
     },
+
     read: async (req, res) => {
-
+        
     },
+
     update: async (req, res) => {
-
+        
     },
+
     delete: async (req, res) => {
-
+        
     },
-
-    
 
 }
