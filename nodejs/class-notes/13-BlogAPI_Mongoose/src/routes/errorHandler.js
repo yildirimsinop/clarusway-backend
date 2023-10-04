@@ -10,5 +10,6 @@ module.exports = (err, req, res, next) => {
         error: true,
         message: err.jessage,
         cause: err.cause,
+        body: req.body
     })
 }
