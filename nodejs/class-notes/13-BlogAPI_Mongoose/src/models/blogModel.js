@@ -6,6 +6,7 @@
 const mongoose = require('mongoose')
 
 /* ------------------------------------------------------- *
+https://mongoosejs.com/docs/models.html
 
 const nameSchema = new mongoose.Schema({
     
@@ -32,8 +33,11 @@ const nameSchema = new mongoose.Schema({
 })
 
 /* ------------------------------------------------------- */
+// blogPost:
 
 const blogPostSchema = new mongoose.Schema({
+
+    // _id
 
     title: {
         type: String,
@@ -51,16 +55,19 @@ const blogPostSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
-    // createdAt
-    // updateAt
-}, {
-    collation: 'blogPosts',
-    timestamps: true
-})
 
-const BlogPostModel = mongoose.model('BlogPost', blogPostSchema)
+    // createdAt
+    // updatedAt
+
+}, { collection: 'blogPosts', timestamps: true })
+
+// const BlogPostModel = mongoose.model('BlogPost', blogPostSchema)
+// module.exports = {
+//     // BlogCategory:
+//     BlogPost: BlogPostModel
+// }
 
 module.exports = {
-    // blogCategory:
-    BlogPost: BlogPostModel
+    // BlogCategory:
+    BlogPost: mongoose.model('BlogPost', blogPostSchema)
 }
