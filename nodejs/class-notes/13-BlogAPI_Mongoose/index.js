@@ -27,6 +27,8 @@ app.all('/', (req, res) => {
 // Connect
 require('./src/dbConnection')
 
+app.use('/blog', require('./src/errorHandler'))
+
 /* ------------------------------------------------------- */
 
 app.use(require('./src/errorHandler'))
