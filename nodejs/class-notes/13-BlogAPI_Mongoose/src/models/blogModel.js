@@ -17,14 +17,14 @@ const nameSchema = new mongoose.Schema({
         type: String, // Veri tipi
         defualt: null, // Default bir değer atayabiliriz.
         trim: true, // Gelen veriyi trim'den geçir: trim(data)
-        select: true, // Show/UnShow
+        select: true, // Data çağrıldığında gelsin mi?
         index: false, // Daha hızlı erişim olsun mu?
         unique: false, // Benzersiz kayıt olsun mu?
         required: [true, 'Error-Message'], // JSON data içinde gelmesi zorunlu mu?
         enum: [[0, 1, 2, 3], 'Error-Message'], // Pattern/Constraint/Limit/Choices
         validate: [function(data) { return true }, 'Error-Message'], // Veriyi filtreden geçiren fonksiyon.
-        get: function(data) { return true }, // Veri çağırırken çalıştırılacak fonksiyon
-        set: function(data) { return true }, // Veri kaydederken çalıştırılacak fonksiyon
+        get: function(data) { return data }, // Veri çağırırken çalıştırılacak fonksiyon
+        set: function(data) { return data }, // Veri kaydederken çalıştırılacak fonksiyon
     }
 
 }, {
@@ -33,23 +33,26 @@ const nameSchema = new mongoose.Schema({
 })
 
 /* ------------------------------------------------------- */
-// Category
-/* ------------------------------------------------------- */
+// ------------------------------------------
+// BlogCategory
+// ------------------------------------------
+
 const blogCategorySchema = new mongoose.Schema({
 
     name: {
         type: String,
         trim: true,
         required: true
-    },
+    }
 
+}, {
     collection: 'blogCategories',
     timestamps: true
 })
 
-
-
-// blogPost:
+// ------------------------------------------
+// BlogPost
+// ------------------------------------------
 const blogPostSchema = new mongoose.Schema({
 
     // _id
@@ -82,6 +85,9 @@ const blogPostSchema = new mongoose.Schema({
 //     BlogPost: BlogPostModel
 // }
 
+// ------------------------------------------
+// Export
+// ------------------------------------------
 module.exports = {
     BlogCategory: mongoose.model('BlogCategory', blogCategorySchema),
     BlogPost: mongoose.model('BlogPost', blogPostSchema)
