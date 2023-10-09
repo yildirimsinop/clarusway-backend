@@ -22,7 +22,9 @@ module.exports = {
 
     personnels: async (req, res) => {
 
-        const data = await res.getModelList(Department)
+        const Personnel = require ('../models/personnel.model')
+
+        const data = await res.getModelList(Personnel, {departmentId: req.)
 
         res.status(200).send({
             error: false,
