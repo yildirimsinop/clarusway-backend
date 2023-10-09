@@ -31,6 +31,19 @@ require('express-async-errors')
 const {dbConnection} = require ('./src/configs/dbConnection')
 dbConnection()
 
+// Middlewares 
+
+
+
+// Accept JSON:
+app.use(express.json())
+
+
+
+// SessionsCookies:
+app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
+
+
 /* ------------------------------------------------------- */
 
 // errorHandler:
