@@ -5,22 +5,19 @@
 const router = require('express').Router()
 /* ------------------------------------------------------- */
 
+const personnel = require('../controllers/personnel.controller')
 
-
-const department = require('../controllers/department.controller')
-
-// URL: /departments
+// URL: /personnels
 
 router.route('/')
-    .get(department.list)
-    .post(department.create)
+    .get(personnel.list)
+    .post(personnel.create)
 
-    router.route('/:id')
-    .get(department.read)
-    .put(department.update)
-    .patch(department.update)
-    .delete(department.delete)
-
+router.route('/:id')
+    .get(personnel.read)
+    .put(personnel.update)
+    .patch(personnel.update)
+    .delete(personnel.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router
