@@ -21,6 +21,13 @@ module.exports = {
 
     create: async (req, res) => {
 
+        // isLead Control:
+        const isLead = req.body?.isLead || false
+
+        if (isLead) {
+            await Personnel.updateMany({departmentId: req.body.departmentId, islead: true}, {islead: false})
+        }
+
         const data = await Personnel.create(req.body)
 
         res.status(201).send({
