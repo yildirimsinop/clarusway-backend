@@ -12,44 +12,36 @@ const express = require('express')
 const app = express()
 
 /* ------------------------------------------------------- */
+// Required Modules:
 
-// envVaribles to process.env
-
+// envVariables to process.env:
 require('dotenv').config()
 const PORT = process.env?.PORT || 8000
 
-
+// asyncErrors to errorHandler:
 require('express-async-errors')
 
+/* ------------------------------------------------------- */
+// Configrations:
 
-
-
-// continue from here...
-
-//Connect to DB:
-
-const {dbConnection} = require ('./src/configs/dbConnection')
+// Connect to DB:
+const { dbConnection } = require('./src/configs/dbConnection')
 dbConnection()
 
-// Middlewares 
-
-
+/* ------------------------------------------------------- */
+// Middlewares:
 
 // Accept JSON:
 app.use(express.json())
 
-
-
 // SessionsCookies:
 app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
-
-
-
 
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
-
+/* ------------------------------------------------------- */
+// Routes:
 
 // HomePath:
 app.all('/', (req, res) => {
@@ -59,9 +51,10 @@ app.all('/', (req, res) => {
     })
 })
 
-// departments
-
+// /departments
 app.use('/departments', require('./src/routes/department.router'))
+// /personnels
+app.use('/personnels', require('./src/routes/personnel.router'))
 
 /* ------------------------------------------------------- */
 
