@@ -12,20 +12,20 @@
     index.js
     readme.md
     src/
-        config/
+        configs/
             dbConnection.js
-        models/
-            department.model.js
-            personnel.model.js
         controllers/
             department.controller.js
             personnel.controller.js
-        routes/
-            department.router.js
-            personnel.router.js
+        helpers/
+            passwordEncrypt.js
         middlewares/
             errorHandler.js
             findSearchSortPage.js
-        helpers/
-            passwordEncrypt.js
+        models/
+            department.model.js
+            personnel.model.js
+        routes/
+            department.router.js
+            personnel.router.js
 ```
