@@ -13,7 +13,13 @@ const app = express()
 
 /* ------------------------------------------------------- */
 
+// envVaribles to process.env
 
+require('dotenv').config()
+const PORT = process.env?.PORT || 8000
+
+
+require('express-async-errors')
 
 // continue from here...
 
