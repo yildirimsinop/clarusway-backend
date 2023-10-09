@@ -11,6 +11,12 @@ module.exports = {
 
         const data = await res.getModelList(Department)
 
+        res.status(200).send({
+            eroror: false,
+            data // data: data
+        })
+
+
     },
     create: async (req, res) => {
 
