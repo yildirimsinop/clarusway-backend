@@ -16,3 +16,5 @@ const DepartmentShcema = new mongoose.Schema({
     collation: "departments",
     timestamps: true
 })
+
+module.exports = mongoose.model('Department', DepartmentSchema)
