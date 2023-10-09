@@ -9,11 +9,11 @@ module.exports = {
 
     list: async (req, res) => {
 
-        const data = await res.getModelList(Personnel)
+        const data = await res.getModelList(Personnel, {}, 'departmentId')
 
         res.status(200).send({
             error: false,
-            detail: res.getModelListDetails(Personnel),
+            detail: await res.getModelListDetails(Personnel),
             data
         })
 
@@ -23,9 +23,8 @@ module.exports = {
 
         // isLead Control:
         const isLead = req.body?.isLead || false
-
         if (isLead) {
-            await Personnel.updateMany({departmentId: req.body.departmentId, islead: true}, {islead: false})
+            const xyz = await Personnel.updateMany({ departmentId: req.body.departmentId, isLead: true }, { isLead: false })
         }
 
         const data = await Personnel.create(req.body)
@@ -49,7 +48,6 @@ module.exports = {
     },
 
     update: async (req, res) => {
-        
 
         // isLead Control:
         const isLead = req.body?.isLead || false
