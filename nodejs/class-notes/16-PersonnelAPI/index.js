@@ -44,6 +44,12 @@ app.use(express.json())
 app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
 
 
+
+
+// res.getModelList():
+app.use(require('./src/middlewares/findSearchSortPage'))
+
+
 /* ------------------------------------------------------- */
 
 // errorHandler:
