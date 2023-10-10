@@ -75,8 +75,6 @@ module.exports = {
         })
     },
 
-    
-
     // LOGIN & LOGOUT
 
     login: async (req, res) => {
