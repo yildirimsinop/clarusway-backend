@@ -40,8 +40,7 @@ module.exports = {
                     }
                     const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: '3d' })
 
-
-
+                    res.send()
 
                 } else {
 
