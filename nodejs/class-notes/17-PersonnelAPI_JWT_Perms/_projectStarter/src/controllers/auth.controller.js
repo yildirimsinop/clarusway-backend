@@ -40,7 +40,7 @@ module.exports = {
                         password: user.password
                     }
 
-                    const refreshToken = jwt.sign(refresData, )
+                    const refreshToken = jwt.sign(refresData, process.env.REFRESH_KEY, {expiresIn: '3d'})
 
 
 
