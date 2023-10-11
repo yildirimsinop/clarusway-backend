@@ -42,9 +42,11 @@ module.exports = {
 
                     res.send({
                     error: false,
-                    token: {
-                        accessToken,
-                        refreshToken
+                   
+                        token: {
+                            access: accessToken,
+                            refresh: refreshToken
+                        
                     }
                     })
 
