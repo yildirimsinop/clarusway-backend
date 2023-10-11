@@ -6,7 +6,7 @@
 // npm i jsonwebtoken
 
 const Personnel = require('../models/personnel.model')
-const jwt = require('')
+const jwt = require('..')
 
 module.exports = {
 
@@ -33,7 +33,7 @@ module.exports = {
                         isLead: user.isLead,
                     }
 
-                    const accessToken = jwt.sign
+                    const accessToken = jwt.sign(accessData, process.env.SECRET_KEY, {expiresIn: '30m'} )
 
                     const refreshData = {
                         username: user.username,
