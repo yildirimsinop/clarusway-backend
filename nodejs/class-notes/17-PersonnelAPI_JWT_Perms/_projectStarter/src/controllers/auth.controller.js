@@ -6,7 +6,7 @@
 // npm i jsonwebtoken
 
 const Personnel = require('../models/personnel.model')
-const jwt = require('..')
+const jwt = require('jsonwebtoken')
 
 module.exports = {
 
