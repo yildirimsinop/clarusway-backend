@@ -5,8 +5,8 @@
 // JWT
 // npm i jsonwebtoken
 
-const Personnel = require('../models/personnel.model')
 const jwt = require('jsonwebtoken')
+const Personnel = require('../models/personnel.model')
 
 module.exports = {
 
@@ -32,15 +32,14 @@ module.exports = {
                         isAdmin: user.isAdmin,
                         isLead: user.isLead,
                     }
-
-                    const accessToken = jwt.sign(accessData, process.env.ACCESS_KEY, {expiresIn: '30m'} )
+                    const accessToken = jwt.sign(accessData, process.env.ACCESS_KEY, { expiresIn: '30m' })
 
                     const refreshData = {
                         username: user.username,
                         password: user.password
                     }
+                    const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: '3d' })
 
-                    const refreshToken = jwt.sign(refresData, process.env.REFRESH_KEY, {expiresIn: '3d'})
 
 
 
@@ -57,7 +56,7 @@ module.exports = {
         } else {
 
             res.errorStatusCode = 401
-            throw new Error('Please entry username and password.')
+            throw new Error('Please enter username and password.')
         }
     },
 
