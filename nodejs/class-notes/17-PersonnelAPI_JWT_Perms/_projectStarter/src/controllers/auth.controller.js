@@ -33,7 +33,7 @@ module.exports = {
                         isLead: user.isLead,
                     }
 
-                    const accessToken = jwt.sign(accessData, process.env.SECRET_KEY, {expiresIn: '30m'} )
+                    const accessToken = jwt.sign(accessData, process.env.ACCESS_KEY, {expiresIn: '30m'} )
 
                     const refreshData = {
                         username: user.username,
