@@ -32,4 +32,16 @@ const document = {
 	host: `${HOST}:${PORT}`,
 	basePath: '/',
 	schemes: ['http', 'https'],
+	
+	schemes: ['http', 'https'],
+	// JWT Settings:
+	securityDefinitions: {
+		JWT: {
+			type: 'apiKey',
+			in: 'header',
+			name: 'Authorization',
+			description: 'Entry Your AccessToken (JWT) for Login. Example: <b>Bearer <i>...token...<i></b>'
+		}
+	},
+	security: [{ "JWT": true }],
 };
