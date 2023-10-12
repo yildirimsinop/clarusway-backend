@@ -62,6 +62,10 @@ app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger.json')
+
+
 // Cookie: Login/Logout Control Middleware
 // app.use(async (req, res, next) => {
 
