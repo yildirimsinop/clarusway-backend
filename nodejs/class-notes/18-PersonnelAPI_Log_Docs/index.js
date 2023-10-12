@@ -62,10 +62,6 @@ app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
-const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('./swagger.json')
-
-
 // Cookie: Login/Logout Control Middleware
 // app.use(async (req, res, next) => {
 
@@ -110,6 +106,13 @@ const swaggerFile = require('./swagger.json')
 //     next()
 // })
 app.use(require('./src/middlewares/authentication'))
+
+// Swagger-UI Middleware:
+// npm i swagger-ui-express
+const swaggerUi = require('swagger-ui-express')
+const swaggerJson = require('./swagger.json')
+// Parse/Run swagger.json and publish on any URL:
+app.use('/docs/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, { swaggerOptions: { persistAuthorization: true } }))
 
 /* ------------------------------------------------------- */
 // Routes:
