@@ -8,8 +8,20 @@ const PORT = process.env?.PORT || 8000
 /* ------------------------------------------------------- */
 // npm i swagger-autogen
 // https://swagger-autogen.github.io/docs/
+/* ------------------------------------------------------- *
+const options = {
+	openapi:          <string>,     // Enable/Disable OpenAPI.                        By default is null
+	language:         <string>,     // Change response language.                      By default is 'en-US'
+	disableLogs:      <boolean>,    // Enable/Disable logs.                           By default is false
+	autoHeaders:      <boolean>,    // Enable/Disable automatic headers recognition.  By default is true
+	autoQuery:        <boolean>,    // Enable/Disable automatic query recognition.    By default is true
+	autoBody:         <boolean>,    // Enable/Disable automatic body recognition.     By default is true
+	writeOutputFile:  <boolean>     // Enable/Disable writing the output file.        By default is true
+};
+/* ------------------------------------------------------- */
 
-const swaggerAutogen = require('swagger-autogen')
+// const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0' })
+const swaggerAutogen = require('swagger-autogen')()
 const packageJson = require('./package.json')
 
 const document = {
@@ -32,8 +44,6 @@ const document = {
 	host: `${HOST}:${PORT}`,
 	basePath: '/',
 	schemes: ['http', 'https'],
-	
-	schemes: ['http', 'https'],
 	// JWT Settings:
 	securityDefinitions: {
 		JWT: {
@@ -45,3 +55,9 @@ const document = {
 	},
 	security: [{ "JWT": true }],
 };
+
+const routes = ['./index.js']
+const outputFile = './swagger.json'
+
+// Create JSON file:
+swaggerAutogen(outputFile, routes, document)
