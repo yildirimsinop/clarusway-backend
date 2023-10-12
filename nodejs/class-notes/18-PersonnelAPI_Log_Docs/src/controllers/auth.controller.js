@@ -13,6 +13,11 @@ module.exports = {
 
     login: async (req, res) => {
         /*
+            #swagger.tags = ['Authentication']
+            #swagger.summary = 'JWT: Login'
+            #swagger.description = 'Login with username and password'
+        */
+        /*
         const { username, password } = req.body
 
         if (username && password) {
@@ -75,6 +80,11 @@ module.exports = {
     },
 
     refresh: async (req, res) => {
+        /*
+            #swagger.tags = ['Authentication']
+            #swagger.summary = 'JWT: Refresh'
+            #swagger.description = 'Refresh accesToken with refreshToken'
+        */
 
         const refreshToken = req.body?.token?.refresh || null
 
@@ -103,6 +113,11 @@ module.exports = {
     },
 
     logout: async (req, res) => {
+        /*
+            #swagger.tags = ['Authentication']
+            #swagger.summary = 'JWT: Logout'
+            #swagger.description = 'No need any doing for logout. You must deleted Bearer Token from your browser.'
+        */
         res.send({
             error: false,
             message: 'No need any doing for logout. You must deleted Bearer Token from your browser.'

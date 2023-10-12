@@ -12,6 +12,11 @@ module.exports = async function(userData, withRefresh = true) {
     if (username && password) {
     
         const user = await Personnel.findOne({ username })
+        
+        if (!withRefresh) {
+            const passwordEncrypt = require('./passwordEncrypt')
+            password = passwordEncrypt(passwordEncrypt)
+        }
     
         if (user && user.password == password) {
     
