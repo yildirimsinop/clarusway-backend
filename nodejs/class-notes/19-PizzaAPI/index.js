@@ -3,6 +3,8 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 /*
+    $ mkdir logs
+    $ cp .env-sample .env
     $ npm init -y
     $ npm i express dotenv mongoose express-async-errors
     $ npm i jsonwebtoken morgan
@@ -52,6 +54,14 @@ app.all('/', (req, res) => {
     })
 })
 
+// user:
+app.use('/users', require('./src/routes/user'))
+// order:
+app.use('/orders', require('./src/routes/order'))
+// pizza:
+app.use('/pizzas', require('./src/routes/pizza'))
+// topping:
+app.use('/toppings', require('./src/routes/topping'))
 
 /* ------------------------------------------------------- */
 
