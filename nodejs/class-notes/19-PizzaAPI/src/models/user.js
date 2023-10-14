@@ -4,12 +4,13 @@
 ------------------------------------------------------- */
 const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- */
+// User Model:
 
 const passwordEncrypt = require('../helpers/passwordEncrypt')
 
-const UserSchema = new mongoose.Schema ({
+const UserSchema = new mongoose.Schema({
 
-    username : {
+    username: {
         type: String,
         trim: true,
         required: true,
@@ -20,7 +21,7 @@ const UserSchema = new mongoose.Schema ({
         type: String,
         trim: true,
         required: true,
-        set: (passwrod) => passwordEncrypt(password)
+        set: (password) => passwordEncrypt(password)
     },
 
     email: {
@@ -29,11 +30,24 @@ const UserSchema = new mongoose.Schema ({
         required: [true, 'Email field must be required'],
         unique: [true, 'There is this email. Email field must be unique'],
         validate: [
-            (email)=> email.includes('@') && email.includes('.'),
+            (email) => email.includes('@') && email.includes('.'),
             'Email type is not correct.'
         ]
-    }
+    },
 
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
 
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
 
-}, {})
+}, {
+    collection: 'users',
+    timestamps: true
+})
+
+module.exports = mongoose.model('User', UserSchema)
