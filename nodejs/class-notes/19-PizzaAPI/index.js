@@ -49,11 +49,11 @@ app.all('/', (req, res) => {
     res.send({
         error: false,
         message: 'Welcome to PIZZA API',
-        isLogin: req.isLogin,
-        user: req.user
     })
 })
 
+// auth:
+app.use('/auth', require('./src/routes/auth'))
 // user:
 app.use('/users', require('./src/routes/user'))
 // order:
