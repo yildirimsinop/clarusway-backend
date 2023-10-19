@@ -5,12 +5,28 @@
 const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 {
-    "username": "test",
-    "password": "1234",
-    "email": "test@site.com",
-    "isActive": true,
-    "isStaff": false,
-    "isAdmin": false,
+  "username": "test",
+  "password": "1234",
+  "email": "test@site.com",
+  "isActive": true,
+  "isStaff": false,
+  "isAdmin": false
+}
+{
+  "username": "staff",
+  "password": "1234",
+  "email": "test1@site.com",
+  "isActive": true,
+  "isStaff": true,
+  "isAdmin": false
+}
+{
+  "username": "admin",
+  "password": "1234",
+  "email": "test2@site.com",
+  "isActive": true,
+  "isStaff": true,
+  "isAdmin": true
 }
 /* ------------------------------------------------------- */
 // User Model:
