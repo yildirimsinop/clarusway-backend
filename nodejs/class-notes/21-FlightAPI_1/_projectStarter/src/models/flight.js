@@ -12,13 +12,13 @@ const { mongoose } = require('../configs/dbConnection')
     "arrival": "ANKARA",
     "arrivalDate": "2020-10-01 12:00:00",
     "createdId": "652ceaa1bae9cde5e8a97522"
-  }
+}
 /* ------------------------------------------------------- */
 // Flight Model:
 
 const FlightSchema = new mongoose.Schema({
 
-    flightNumber: {
+    flightNumber: { // IS-AN-005
         type: String,
         trim: true,
         required: true,
@@ -39,7 +39,7 @@ const FlightSchema = new mongoose.Schema({
 
     departureDate: {
         type: Date,
-        required: true
+        required: true,
     },
 
     arrival: {
@@ -50,7 +50,7 @@ const FlightSchema = new mongoose.Schema({
 
     arrivalDate: {
         type: Date,
-        required: true
+        required: true,
     },
 
     createdId: {
@@ -58,7 +58,6 @@ const FlightSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-
 
 }, { collection: 'flights', timestamps: true })
 
