@@ -52,6 +52,14 @@ app.all('/', (req, res) => {
 
 // auth:
 app.use('/auth', require('./src/routes/auth'))
+// user:
+app.use('/users', require('./src/routes/user'))
+// flight:
+app.use('/flights', require('./src/routes/flight'))
+// passenger:
+app.use('/passengers', require('./src/routes/passenger'))
+// reservation:
+app.use('/reservations', require('./src/routes/reservation'))
 // document:
 app.use('/documents', require('./src/routes/document'))
 
