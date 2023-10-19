@@ -6,19 +6,22 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/flight:
 
+const permissions = require('../middlewares/permissions')
 const flight = require('../controllers/flight')
 
 // URL: /flights
 
+router.use()
+
 router.route('/')
-    .get(flight.list)
-    .post(flight.create)
+    .get(permissions.isStaff, flight.list)
+    .post(permissions.isStaff, flight.create)
 
 router.route('/:id')
-    .get(flight.read)
-    .put(flight.update)
-    .patch(flight.update)
-    .delete(flight.delete)
+    .get(permissions.isStaff,flight.read)
+    .put(permissions.isStaff,flight.update)
+    .patch(permissions.isStaff,flight.update)
+    .delete(permissions.is,flight.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router
