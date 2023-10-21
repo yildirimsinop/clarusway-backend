@@ -36,7 +36,7 @@ const ReservationSchema = new mongoose.Schema({
 	// passengers: [
 	// 	{
 	// 		type: mongoose.Schema.Types.ObjectId,
-	// 		ref: 'User',
+	// 		ref: 'Passenger',
 	// 		required: true,
 	// 	}
 	// ],
