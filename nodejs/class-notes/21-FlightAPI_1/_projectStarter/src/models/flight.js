@@ -13,6 +13,15 @@ const { mongoose } = require('../configs/dbConnection')
     "arrivalDate": "2020-10-01 12:00:00",
     "createdId": "652ceaa1bae9cde5e8a97522"
 }
+{
+  "flightNumber": "IS-AN-002",
+  "airline": "THY",
+  "departure": "ISTANBUL",
+  "departureDate": "2020-10-01 23:00:00",
+  "arrival": "ANTALYA",
+  "arrivalDate": "2020-10-02 03:00:00",
+  "createdId": "65317b1c29b1267920ddf30d"
+}
 /* ------------------------------------------------------- */
 // Flight Model:
 
