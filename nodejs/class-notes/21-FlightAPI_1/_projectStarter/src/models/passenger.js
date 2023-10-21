@@ -5,11 +5,11 @@
 const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 {
-    "firstName": "Test 1",
-    "lastName": "Test 1",
-    "gerder": "M",
+    "firstName": "FirstName 1",
+    "lastName": "LastName",
+    "gender": "F",
     "email": "test1@site.com",
-    "createdId": "652ceaa1bae9cde5e8a97522"
+    "createdId": "65317b1c29b1267920ddf30d"
 }
 /* ------------------------------------------------------- */
 // Passenger Model:
