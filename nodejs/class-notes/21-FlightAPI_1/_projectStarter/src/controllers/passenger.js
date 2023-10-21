@@ -43,6 +43,8 @@ module.exports = {
             }
         */
 
+        // req.body.createdId = req.user._id
+
         const data = await Passenger.create(req.body)
 
         res.status(201).send({
