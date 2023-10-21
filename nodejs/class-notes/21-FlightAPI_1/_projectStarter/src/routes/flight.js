@@ -11,17 +11,27 @@ const flight = require('../controllers/flight')
 
 // URL: /flights
 
-router.use()
+// router.route('/')
+//     .get(permissions.isStaffOrAdmin, flight.list)
+//     .post(permissions.isStaffOrAdmin, flight.create)
+
+// router.route('/:id')
+//     .get(permissions.isStaffOrAdmin, flight.read)
+//     .put(permissions.isStaffOrAdmin, flight.update)
+//     .patch(permissions.isStaffOrAdmin, flight.update)
+//     .delete(permissions.isAdmin, flight.delete)
+
+router.use(permissions.isStaffOrAdmin)
 
 router.route('/')
-    .get(permissions.isStaff, flight.list)
-    .post(permissions.isStaff, flight.create)
+    .get(flight.list)
+    .post(flight.create)
 
 router.route('/:id')
-    .get(permissions.isStaff,flight.read)
-    .put(permissions.isStaff,flight.update)
-    .patch(permissions.isStaff,flight.update)
-    .delete(permissions.is,flight.delete)
+    .get(flight.read)
+    .put(flight.update)
+    .patch(flight.update)
+    .delete(permissions.isAdmin, flight.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router
