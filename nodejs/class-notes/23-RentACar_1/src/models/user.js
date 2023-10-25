@@ -71,10 +71,33 @@ const UserSchema = new mongoose.Schema({
 
 }, { collection: 'users', timestamps: true })
 
+/* ------------------------------------------------------- */
+// Schema Configs:
+
 const passwordEncrypt = require('../helpers/passwordEncrypt')
 
 UserSchema.pre('save', function(next) {
-    this.password = 
+
+    const isEmailValidated = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)
+
+    if (isEmailValidated) {
+
+        const isPasswordValidated = Regexp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$").test(this.password)
+    
+        if (isPasswordValidated) {
+            
+            this.password = passwordEncrypt(this.password)
+
+            next() // Allow to save.
+        } else {
+            
+            next( new Error('Passowrd not validated.') )
+        }
+    } else {
+        
+        next( new Error('Email not validated.') )
+    }
 })
 
 /* ------------------------------------------------------- */
+module.exports = mongoose.model('User', UserSchema)
