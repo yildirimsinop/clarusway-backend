@@ -71,4 +71,10 @@ const UserSchema = new mongoose.Schema({
 
 }, { collection: 'users', timestamps: true })
 
+const passwordEncrypt = require('../helpers/passwordEncrypt')
+
+UserSchema.pre('save', function(next) {
+    this.password = 
+})
+
 /* ------------------------------------------------------- */
