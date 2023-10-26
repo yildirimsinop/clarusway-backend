@@ -4,6 +4,7 @@
 ------------------------------------------------------- */
 // Car Controller:
 
+const Reservation = require('../models/reservation')
 const Car = require('../models/car')
 
 module.exports = {
@@ -28,6 +29,36 @@ module.exports = {
         // Show only isPublish=true cars. Except Admin.
         // if (!req.user?.isAdmin) filters = { isPublish: true }
         if (!req.user?.isAdmin) filters.isPublish = true
+
+        // List with date filter:
+        // http://127.0.0.1:8000/cars?start=2023-10-13&end=2023-10-18
+        const { start: getStartDate, end: getEndDate } = req.query
+
+        if (getStartDate && getEndDate) {
+
+            const reservedCars = await Reservation.find({
+                $nor : [
+                    { startDate: { $gt: getEndDate } },
+                    { endDate: { $lt: getStartDate } }
+                ]
+            }, { _id: 0, carId: 1 }).distinct('carId')
+            /*
+            distinct() convert from:
+            [
+                { carId: new ObjectId("65352f518a9ea121b1ca5001") },
+                { carId: new ObjectId("65352f518a9ea121b1ca5002") }
+            ]
+            to:
+            [
+                new ObjectId("65352f518a9ea121b1ca5001"),
+                new ObjectId("65352f518a9ea121b1ca5002")
+            ]
+            */
+            if (reservedCars.length) {
+                filters._id = { $nin:  reservedCars }
+            }
+            // console.log(filters)
+        }
 
         const data = await res.getModelList(Car, filters)
 
