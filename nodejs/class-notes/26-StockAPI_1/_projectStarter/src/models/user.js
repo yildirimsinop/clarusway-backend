@@ -39,11 +39,6 @@ const { mongoose } = require('../configs/dbConnection')
 
 const UserSchema = new mongoose.Schema({
 
-    // id: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     default: function() { return this._id }
-    // },
-
     username: {
         type: String,
         trim: true,
