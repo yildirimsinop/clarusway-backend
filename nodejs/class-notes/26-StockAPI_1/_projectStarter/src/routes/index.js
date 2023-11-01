@@ -22,12 +22,12 @@ router.use('/brands', require('./brand'))
 router.use('/categories', require('./category'))
 // firm:
 router.use('/firms', require('./firm'))
-// // product:
-// router.use('/products', require('./product'))
-// // purchase:
-// router.use('/purchases', require('./purchase'))
-// // sale:
-// router.use('/sales', require('./sale'))
+// product:
+router.use('/products', require('./product'))
+// purchase:
+router.use('/purchases', require('./purchase'))
+// sale:
+router.use('/sales', require('./sale'))
 
 // document:
 router.use('/documents', require('./document'))
