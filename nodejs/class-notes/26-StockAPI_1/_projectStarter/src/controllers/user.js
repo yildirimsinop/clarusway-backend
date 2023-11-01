@@ -22,7 +22,9 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(User)
+        const filters = (req.user?.is_superadmin) ? {} : { _id: req.user._id }
+
+        const data = await res.getModelList(User, filters)
 
         // res.status(200).send({
         //     error: false,
@@ -69,7 +71,9 @@ module.exports = {
             #swagger.summary = "Get Single User"
         */
 
-        const data = await User.findOne({ _id: req.params.id })
+        const filters = (req.user?.is_superadmin) ? { _id: req.params.id } : { _id: req.user._id }
+
+        const data = await User.findOne(filters)
 
         res.status(200).send({
             error: false,
@@ -94,12 +98,15 @@ module.exports = {
             }
         */
 
-        const data = await User.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+        const filters = (req.user?.is_superadmin) ? { _id: req.params.id } : { _id: req.user._id }
+        req.body.is_superadmin = (req.user?.is_superadmin) ? req.body.is_superadmin : false
+
+        const data = await User.updateOne(filters, req.body, { runValidators: true })
 
         res.status(202).send({
             error: false,
             data,
-            new: await User.findOne({ _id: req.params.id })
+            new: await User.findOne(filters)
         })
     },
 

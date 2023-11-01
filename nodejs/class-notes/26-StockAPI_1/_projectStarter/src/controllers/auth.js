@@ -45,16 +45,14 @@ module.exports = {
                     // const { randomUUID } = require('node:crypto')
                     // if (!tokenData) tokenData = await Token.create({
                     //     user_id: user._id,
-                    //     token: passwordEncrypt(randomUUID())
+                    //     token: randomUUID()
                     // })
-
-                    
 
                     res.send({
                         error: false,
                         // token: tokenData.token,
                         // FOR REACT PROJECT:
-                        key: tokenData.token, 
+                        key: tokenData.token,
                         user,
                     })
 
@@ -76,6 +74,24 @@ module.exports = {
     },
 
     logout: async (req, res) => {
+        /*
+            #swagger.tags = ["Authentication"]
+            #swagger.summary = "Logout"
+            #swagger.description = 'Delete token key.'
+        */
 
+        const auth = req.headers?.authorization || null // Token ...tokenKey...
+        const tokenKey = auth ? auth.split(' ') : null // ['Token', '...tokenKey...']
+
+        let result = {}
+        if (tokenKey && tokenKey[0] == 'Token') {
+            result = await Token.deleteOne({ token: tokenKey[1] })
+        }
+
+        res.send({
+            error: false,
+            message: 'Logout was OK.',
+            result
+        })
     },
 }
