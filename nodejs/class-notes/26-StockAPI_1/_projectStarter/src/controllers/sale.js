@@ -55,6 +55,9 @@ module.exports = {
         req.body.is_staff = false
         req.body.is_superadmin = false
 
+        // Auto add user_id to req.body:
+        req.body.user_id = req.user?._id
+
         const data = await Sale.create(req.body)
 
         res.status(201).send({
