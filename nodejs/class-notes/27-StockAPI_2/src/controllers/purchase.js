@@ -67,6 +67,7 @@ module.exports = {
             #swagger.summary = "Get Single Purchase"
         */
 
+        // Read:
         const data = await Purchase.findOne({ _id: req.params.id }).populate(['firm_id', 'brand_id', 'product_id'])
 
         res.status(200).send({
@@ -92,9 +93,10 @@ module.exports = {
             // different:
             const quantity = req.body.quantity - currentPurchase.quantity
             // set stock (quantity) when Purchase process:
-            const updateProduct = await Product.updateOne({ _id: currentPurchase.product_id }, { $inc: { stock: quantity } })
+            const updateProduct = await Product.updateOne({ _id: currentPurchase.product_id }, { $inc: { stock: +quantity } })
         }
 
+        // Update:
         const data = await Purchase.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
         res.status(202).send({
