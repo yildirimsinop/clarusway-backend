@@ -17,7 +17,8 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setInfo({ ...info, [name]: Number(value) })
+    // setInfo({ ...info, [name]: Number(value) })
+    setInfo({ ...info, [name]: (value) })
   }
 
   const handleSubmit = (e) => {

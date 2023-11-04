@@ -20,6 +20,7 @@ export default function ProductTable() {
     },
     {
       field: "category",
+      valueGetter: (params) => params.row.category_id?.name,
       headerName: "Category",
       flex: 2,
       headerAlign: "center",
@@ -28,6 +29,7 @@ export default function ProductTable() {
     },
     {
       field: "brand",
+      valueGetter: (params) => params.row.brand_id?.name,
       headerName: "Brand",
       flex: 2,
       headerAlign: "center",
