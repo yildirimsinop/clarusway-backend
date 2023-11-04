@@ -23,6 +23,7 @@ export default function SaleTable({ handleOpen, setInfo }) {
 
     {
       field: "brand",
+      valueGetter: (params) => params.row.brand_id?.name,
       headerName: "Brand",
       flex: 1,
       minWidth: 100,
@@ -31,6 +32,7 @@ export default function SaleTable({ handleOpen, setInfo }) {
     },
     {
       field: "product",
+      valueGetter: (params) => params.row.product_id?.name,
       headerName: "Product",
       flex: 1,
       minWidth: 100,
