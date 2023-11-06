@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome to Home</h1>
+    <p><a href="/view">Template</a></p>
+    <p><a href="/api">API</a></p>
+    <pre>
+        <!-- running JS -- no print -->
+        <% console.log('template running') %>
+        <!-- safe-print to html -->
+        <%= '<b>text</b>' %>
+        <!-- direkt-print to html -->
+        <%- '<b>text</b>' %>
+        <!-- comment line -- no print -->
+        <%# commment %>
+        <!--  cancel tamplate code -->
+        <%% no template %>
+        <!-- direkt-print to html and remove newLine (\n)-->
+        <%- '<b>text</b>' -%>
+    </pre>
+</body>
+
+</html>
