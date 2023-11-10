@@ -14,7 +14,7 @@ const app = express()
 require('dotenv').config()
 const PORT = process.env.PORT || 8000
 
-/* ------------------------------------------------------- */
+/* -------------------------------------------- */
 // SessionCookies:
 // http://expressjs.com/en/resources/middleware/cookie-session.html
 // https://www.npmjs.com/package/cookie-session
