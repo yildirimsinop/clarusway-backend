@@ -40,19 +40,21 @@
                 <span>Nadia's Garden Pizza</span>
             </a>
             <div class="collapse navbar-collapse" id="navbars-host">
+                <!-- admin-area-begin -->
+                {% if (user) { %}
                 <ul class="navbar-nav ms-auto">
-                    {% if (user) { %}
-                    <li class="nav-item"><span class="nav-link text-danger"><b>{%= user?.username %}</b></span></li>
+                    <li class="nav-item"><span class="nav-link text-danger"><b>{%= user.username %}</b></span></li>
                     <li class="nav-item"><a class="btn btn-secondary mx-3" href="/orders">My Orders</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout"><b>Logout</b></a></li>
-                    {% } else { %}
+                </ul>
+                {% } else { %}
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/users/create">Register</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/login"><b>Login</b></a></li>
-                    {% } %}
                 </ul>
+                {% } %}
+                <!-- admin-area-start -->
             </div>
         </div>
     </nav>
     <!-- navbar end -->
-    <!-- content start -->
-    <div class="pb-5">
