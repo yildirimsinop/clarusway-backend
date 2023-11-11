@@ -62,271 +62,58 @@
         <div class="row">
         </div>
         <div class="d-flex flex-wrap justify-content-center pt-5">
+            {% for (let pizza of pizzas) { %}
             <div class="card m-3 shadow" style="max-width: 640px;">
                 <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://hips.hearstapps.com/hmg-prod/images/classic-cheese-pizza-recipe-2-64429a0cb408b.jpg"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
+                    <div class="col-md-6">
+                        {% if (pizza?.image) { %}
+                        <img src="{%= pizza.image %}" class="img-fluid rounded-start" style="width: 350px; height: 275px;">
+                        {% } %}
+                    </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                            <h4 class="card-title">Super Pizza 201</h4>
+                            <h4 class="card-title">{%= pizza.name %}</h4>
                             <div class="card-text">
                                 <ul>
-                                    <li>Cheese</li>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
+                                    {% for (let topping of pizza.toppings) { %}
+                                    <li>{%= topping.name %}</li>
+                                    {% } %}
                                 </ul>
-                                <strong> 99.99 $</strong>
+                                <strong> {%= pizza.price %} $</strong>
                             </div>
                             <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee201"
-                                    class=" btn btn-warning">Order</a>
+                                <a href="/orders/create?pizza={%= pizza.id %}" class=" btn btn-warning">Order</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQljiC2wYE65lr6sfTx0CI-3fByV21OY-HEruMLWc14OLZ6T29vzOP4_0AQyrpITcuoZm0&amp;usqp=CAU"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 202</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                </ul>
-                                <strong> 129.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee202"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://hips.hearstapps.com/hmg-prod/images/bbq-pizza-320-1547837615.jpg"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 203</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 149.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee203"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8NaRA1XtgPgTFKkCe8ZKXeJDOQkhj7spI7A&amp;usqp=CAU"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 204</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Cheese</li>
-                                    <li>Pineapple</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 199.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee204"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://www.thespruceeats.com/thmb/MD-dSsFP6k5XBSk9XcdOIfnF4K0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/prosciutto-pizza-4844358-hero-04-c0a6f73057ce4fed88982b75a5c2c8e1.jpg"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 205</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 199.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee205"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu32ZkwB6QN3SChlL-dVKiZd4SwpJEg3zAS2JP4S-X1PbK5Wo_nVVD-jjJe4rE8Gbo_Zc&amp;usqp=CAU"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 211</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Cheese</li>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 199.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee211"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu32ZkwB6QN3SChlL-dVKiZd4SwpJEg3zAS2JP4S-X1PbK5Wo_nVVD-jjJe4rE8Gbo_Zc&amp;usqp=CAU"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 212</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Cheese</li>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 199.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee212"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu32ZkwB6QN3SChlL-dVKiZd4SwpJEg3zAS2JP4S-X1PbK5Wo_nVVD-jjJe4rE8Gbo_Zc&amp;usqp=CAU"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 213</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Cheese</li>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 199.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee213"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu32ZkwB6QN3SChlL-dVKiZd4SwpJEg3zAS2JP4S-X1PbK5Wo_nVVD-jjJe4rE8Gbo_Zc&amp;usqp=CAU"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 214</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Cheese</li>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 199.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee214"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card m-3 shadow" style="max-width: 640px;">
-                <div class="row">
-                    <div class="col-md-6"> <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu32ZkwB6QN3SChlL-dVKiZd4SwpJEg3zAS2JP4S-X1PbK5Wo_nVVD-jjJe4rE8Gbo_Zc&amp;usqp=CAU"
-                            class="img-fluid rounded-start" style="width: 350px; height: 275px;"> </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h4 class="card-title">Super Pizza 215</h4>
-                            <div class="card-text">
-                                <ul>
-                                    <li>Cheese</li>
-                                    <li>Pepperoni</li>
-                                    <li>Pineapple</li>
-                                    <li>Olive</li>
-                                    <li>Sousage</li>
-                                </ul>
-                                <strong> 199.99 $</strong>
-                            </div>
-                            <div class="pt-3">
-                                <a href="/orders/create?pizza=654cddeb9846a03c2a0ee215"
-                                    class=" btn btn-warning">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% } %}
         </div>
         <!-- Pagination -->
+        {% if (details.pages) { %}
         <nav class="p-3 text-center" aria-label="Pagination">
-            <a class="btn btn-primary" href="/pizzas?&page=1">&laquo;</a>
-            <a class="btn btn-primary me-2" href="/pizzas?&page=false">&larr;</a> <a class="btn btn-primary"
-                href="/pizzas?&page=1">1</a> <a class="btn btn-secondary" href="/pizzas?&page=2">2</a> <a
-                class="btn btn-secondary" href="/pizzas?&page=3">3</a> <a class="btn btn-secondary"
-                href="/pizzas?&page=4">4</a> <a class="btn btn-secondary" href="/pizzas?&page=5">5</a> <a
-                class="btn btn-primary ms-2" href="/pizzas?&page=2">&rarr;</a>
-            <a class="btn btn-primary" href="/pizzas?&page=5">&raquo;</a>
+            <a class="btn btn-primary" href="{%= pageUrl %}&page=1">&laquo;</a>
+            {% if (details.pages.previous) { %}
+            <a class="btn btn-primary me-2" href="{%= pageUrl %}&page={%= details.pages.previous %}">&larr;</a>
+            {% } else { %}
+            <span class="btn btn-light disabled me-2">&larr;</span>
+            {% } %}
+
+            <a class="btn btn-primary" href="{%= pageUrl %}&page=1">1</a>
+            <a class="btn btn-secondary" href="{%= pageUrl %}&page=2">2</a>
+            <a class="btn btn-secondary" href="{%= pageUrl %}&page=3">3</a>
+            <a class="btn btn-secondary" href="{%= pageUrl %}&page=4">4</a>
+            <a class="btn btn-secondary" href="{%= pageUrl %}&page=5">5</a>
+
+            <a class="btn btn-primary ms-2" href="{%= pageUrl %}&page=2">&rarr;</a>
+
+            <a class="btn btn-primary" href="{%= pageUrl %}&page={%= details.pages.total %}">&raquo;</a>
         </nav>
+        {% } %}
         <!-- totalRecords -->
         <p class="text-center">
-            <span class="p-2 bg-dark text-white">Total 45 Records</span>
+            <span class="p-2 bg-dark text-white">Total {%= details.totalRecords %} Records</span>
         </p>
     </div>
     <!-- content end -->
