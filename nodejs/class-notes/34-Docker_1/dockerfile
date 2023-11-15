@@ -1,1 +1,17 @@
+
+#Altyapi (from dockerHub):
 FROM node:20.9.0-alpine
+
+# Calisma ALani:
+WORKDIR /app
+
+# Dosyalari Aktar: COPY from to
+
+# COPY hello.js/app
+
+COPY . .
+
+# After build (when image to container):
+# docker run yaptiktan sonra calisir. Yani image i conteynera donustururken calisir.
+
+CMD node hello.js
