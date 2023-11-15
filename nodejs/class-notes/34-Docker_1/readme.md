@@ -14,7 +14,7 @@
     * Kurulum: orta (iso image)
     * VeriTaşıma: orta
     * Maliyet: orta
-    * Bir makiaden diğer makinaya geçiş zorluğu.
+    * Bir makinaden diğer makinaya geçiş zorluğu.
     * Hypervisor yazılımları -> vmware.com
     * VPS (Virtual Private Server), VDS (Virtual Dedicated Server)
 
@@ -27,9 +27,22 @@
     * Microservice mimarisi.
     * Container yazılımları -> docker.com
 
-## Temel Bilgiler
+---
+## DOCKER
 
-* IP ve Port:
-  * Default portlar 80 443 -> https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
-  * http -> 80 * http://clarusway.com == http://clarusway.com:80
-  * https -> 443 * https://clarusway.com == https://clarusway.com:443 (need SSL)
+* https://docs.docker.com/get-started/docker_cheatsheet.pdf
+
+```sh
+
+    $ docker --version
+    $ docker version
+
+    $ docker info
+    
+    $ docker --help
+    $ docker help
+    $ docker build --help
+
+    $ docker search <imagename> # search on dockerhub
+
+```
