@@ -1,7 +1,30 @@
-# FROM node
+#? FROM node
 
 FROM node:20.9.0-alpine3.18
 
 WORKDIR /backend
 
+
+#? Copy al local files to image
 COPY . .
+
+#? When build image:
+RUN mkdir -p logs
+RUN mkdir -p upload
+RUN npm install
+
+#? When run container:
+# CMD npm start
+CMD [ "npm", "start" ]
+
+#? Optional:
+EXPOSE 8000
+
+
+# $ cd /backend
+# $ docker build -t backend .
+
+#? burdaki ilk 7000 gercek olan 8000 ise dockerda olan port numarasi. Yani 8000 portunu 7000 e yonlendir demek. 
+#? $ docker run -p 7000:8000 --name backend backend
+# $ docker run -d -p 8000:8000 --name backend backend
+# Browser: http://localhost:8000
