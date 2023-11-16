@@ -17,3 +17,8 @@ EXPOSE 5173
 # $ docker run -p 5173:5173 --name frontend frontend
 # $ docker run -d -p 5173:5173 --name frontend frontend
 # Browser: http://localhost:5173
+
+#once bunlar repoya kayit etmek icin
+#? docker tag frontend umity/frontend
+#? docker push umity/frontend
+
